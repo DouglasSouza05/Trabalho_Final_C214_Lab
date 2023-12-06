@@ -13,10 +13,17 @@ class Gerenciador:
         return self.contatos
 
     def search_contato(self, nome, sobrenome):
-        pass
+        for contato in self.contatos:
+            if contato.nome == nome and contato.sobrenome == sobrenome:
+                return contato
+        return None
 
     def remove_contato(self, nome, sobrenome):
-        pass
+        contato = self.search_contato(nome, sobrenome)
+        if contato:
+            self.contatos.remove(contato)
+            self.save_contatos()
 
     def save_contatos(self):
-        pass
+        with open("contatos.json", 'w') as lista:
+            json.dump([vars(contato) for contato in self.contatos], lista)
