@@ -6,15 +6,16 @@ class Gerenciador:
         self.contatos = []
 
     def add_contato(self, contato):
-        pass
+        self.contatos.append(contato)
+        self.save_contatos()
 
     def all_contatos(self):
+        return self.contatos
+
+    def search_contato(self, nome, sobrenome):
         pass
 
-    def search_contato(self, nome):
-        pass
-
-    def remove_contato(self, nome):
+    def remove_contato(self, nome, sobrenome):
         pass
 
     def save_contatos(self):
