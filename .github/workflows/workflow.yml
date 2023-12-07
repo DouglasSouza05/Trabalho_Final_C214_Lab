@@ -65,6 +65,6 @@ jobs:
     - name: Send notification email
       run: |
           ls
-          ./scripts/email.sh
+          /Trabalho_Final_C214_Lab/scripts/email.sh
       env:
           YOUR_EMAIL_VARIABLE: ${{ secrets.YOUR_EMAIL_VARIABLE }}
