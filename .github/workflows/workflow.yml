@@ -49,4 +49,5 @@ jobs:
 
     - name: Test with unittest
       run: |
-        python -m unittest ProjetoAgenda/Testes/test_gerenciador.py
+        python -m unittest ProjetoAgenda/Testes/test_gerenciador.py --xml-output relatorio_teste.xml
+        ls
