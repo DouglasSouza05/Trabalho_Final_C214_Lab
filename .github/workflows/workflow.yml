@@ -48,6 +48,4 @@ jobs:
 
     - name: Test with unittest
       run: |
-        python -m unittest ProjetoAgenda/Testes/test_gerenciador.py
-          -v  # verbose output
-          -m report_html:test_reports/report.html  # save HTML report
+        python -m unittest ProjetoAgenda/Testes/test_gerenciador.py -m report_html:test_reports/report.html
