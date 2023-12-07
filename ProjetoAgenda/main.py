@@ -6,6 +6,7 @@ class Main:
         self.gerenciador = Gerenciador()
 
     def exibir_menu(self):
+
         while True:
             print("\n------- MENU -------\n")
             print("1. Adicionar Contato na Agenda.")
@@ -36,6 +37,7 @@ class Main:
                 print("Escolha inválida. Tente novamente.")
 
     def adicionar_contato(self):
+
         nome = input("\nDigite o Nome: ")
         sobrenome = input("Digite o Sobrenome: ")
         telefone = input("Digite o Telefone: ")
@@ -51,10 +53,20 @@ class Main:
         print("Contato Adicionado com Sucesso! Agenda Salva.")
 
     def listar_contatos(self):
+
+        config = Config()
+
         print("\n------- LISTA DE CONTATOS -------\n")
-        self.gerenciador.list_contatos()
+        contatos = self.gerenciador.list_contatos()
+
+        if not contatos:
+            print("Não Há Contatos Salvos na Agenda!")
+        else:
+            for contato in contatos:
+                print(config.formatar_contato(contato))
 
     def pesquisar_contato(self):
+
         config = Config()
 
         nome = input("\nDigite o Nome do Contato: ")
@@ -69,6 +81,7 @@ class Main:
             print("\nContato Não Encontrado na Agenda!")
 
     def remover_contato(self):
+
         nome = input("\nDigite o Nome do Contato a ser Removido: ")
         sobrenome = input("Digite o Sobrenome do Contato a ser Removido: ")
 
@@ -82,8 +95,8 @@ class Main:
             print("Não Há Nenhum Contato com essas Informações!")
 
     def deletar_todos_contatos(self):
-        print()
 
+        print()
         arquivo = "contatos.json"
 
         if self.gerenciador.arquivo_exist(arquivo):
@@ -91,6 +104,7 @@ class Main:
             print()
             if confirmacao.lower() == "s":
                 self.gerenciador.delete_contatos()
+                print("Arquivo 'contatos.json' Removido com Sucesso. \n")
                 print("Todos os Contatos Foram Excluídos.")
             else:
                 print("Operação Cancelada.")

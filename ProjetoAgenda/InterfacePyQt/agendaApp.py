@@ -104,7 +104,17 @@ class AgendaApp(QWidget):
         self.result_text.append("Contato Adicionado com Sucesso!")
 
     def listar_contatos(self):
-        pass
+        config = Config()
+
+        self.result_text.clear()
+
+        if not self.gerenciador.contatos:
+            self.result_text.append("Não Há Contatos Salvos na Agenda!")
+        else:
+            self.result_text.append("------- LISTA DE CONTATOS -------")
+            self.result_text.append("")
+            for contato in self.gerenciador.contatos:
+                self.result_text.append(config.formatar_contato(contato))
 
     def pesquisar_contato(self):
 
@@ -151,7 +161,28 @@ class AgendaApp(QWidget):
             self.result_text.append("Não Há Nenhum Contato com essas Informações!")
 
     def deletar_agenda(self):
-        pass
+        
+        arquivo = "contatos.json"
+
+        self.nome_input.clear()
+        self.sobrenome_input.clear()
+        self.result_text.clear()
+
+        if self.gerenciador.arquivo_exist(arquivo):
+
+            # QMessageBox para confirmação
+            resposta = QMessageBox.question(self, "Confirmação", "Tem Certeza De Que Deseja Excluir Todos os Contatos?", QMessageBox.Yes | QMessageBox.No)
+
+            if resposta == QMessageBox.Yes:
+                self.gerenciador.delete_contatos()
+                self.result_text.append("------- AGENDA DELETADA -------")
+                self.result_text.append("")
+                self.result_text.append("Arquivo contatos.json Removido com Sucesso.")
+            else:
+                self.result_text.append("Operação Cancelada.")
+        else:
+            self.result_text.append(f"O Arquivo {arquivo} Não Existe.")
+            
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
