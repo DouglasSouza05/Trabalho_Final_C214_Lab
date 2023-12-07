@@ -4,24 +4,47 @@ import pytest
 from unittest.mock import patch, MagicMock
 from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Config
 
-@pytest.fixture
-def gerenciador_com_contatos(tmp_path):
-    contatos_file = tmp_path / "contatos.json"
-    gerenciador = Gerenciador()
-    gerenciador.config = Config(contatos_file=contatos_file)
-    gerenciador.add_contato(nome="João", sobrenome="Silva", telefone="123456789", empresa="ABC LTDA", email="joao.silva@example.com")
-    return gerenciador
+import unittest
 
-def test_list_contatos(capsys, gerenciador_com_contatos):
-    gerenciador_com_contatos.list_contatos()
-    captured = capsys.readouterr()
-    assert "João Silva" in captured.out
+class TestGerenciador(unittest.TestCase):
 
-@patch("builtins.open", new_callable=MagicMock)
-def test_save_contatos(mock_open, gerenciador_com_contatos):
-    with patch("ProjetoAgenda.Agenda.gerenciador.Config.formatar_contato", return_value={"nome": "João", "sobrenome": "Silva"}):
-        with patch("builtins.open", mock_open):
-            gerenciador_com_contatos.save_contatos()
+    def setUp(self):
+        # Este método será chamado antes de cada teste.
+        self.gerenciador = Gerenciador()
 
-    mock_open.assert_called_once_with(gerenciador_com_contatos.config.contatos_file, "w")
-    mock_open.return_value.__enter__.return_value.write.assert_called_once()
+    def test_add_contato(self):
+        # Testa se um contato é adicionado corretamente.
+        self.gerenciador.add_contato(nome="John", sobrenome="Doe", telefone="123456789")
+        self.assertEqual(len(self.gerenciador.contatos), 1)
+
+    def test_remove_contato(self):
+        # Testa se um contato é removido corretamente.
+        self.gerenciador.add_contato(nome="John", sobrenome="Doe", telefone="123456789")
+        self.gerenciador.remove_contato(nome="John", sobrenome="Doe")
+        self.assertEqual(len(self.gerenciador.contatos), 0)
+
+    def test_search_contato(self):
+        # Testa se a busca por contato funciona corretamente.
+        self.gerenciador.add_contato(nome="John", sobrenome="Doe", telefone="123456789")
+        contato_encontrado = self.gerenciador.search_contato(nome="John", sobrenome="Doe")
+        self.assertIsNotNone(contato_encontrado)
+
+    def test_list_contatos(self):
+        # Testa se a listagem de contatos funciona corretamente.
+        self.gerenciador.add_contato(nome="John", sobrenome="Doe", telefone="123456789")
+        # Redireciona a saída padrão para um buffer para capturar a saída do print.
+        with unittest.mock.patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
+            self.gerenciador.list_contatos()
+            output = mock_stdout.getvalue().strip()
+        self.assertIn("John Doe", output)
+
+    def test_delete_contatos(self):
+        # Testa se a exclusão do arquivo de contatos funciona corretamente.
+        with unittest.mock.patch("os.remove") as mock_remove:
+            self.gerenciador.delete_contatos()
+            mock_remove.assert_called_once_with("contatos.json")
+
+    # Adicione mais testes conforme necessário.
+
+if __name__ == '__main__':
+    unittest.main()

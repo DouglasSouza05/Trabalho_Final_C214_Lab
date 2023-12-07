@@ -48,5 +48,5 @@ jobs:
 
     - name: Test with pytest
       run: |
-        python -m pytest
+        python -m unittest ProjetoAgenda/Testes/test_gerenciador.py
         pytest ProjetoAgenda/test_gerenciador.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
