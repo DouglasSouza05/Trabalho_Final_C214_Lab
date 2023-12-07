@@ -1,3 +1,5 @@
+# ProjetoAgenda/Agenda/gerenciador.py
+
 from .contatos import Contato
 from .config import Config
 import json
@@ -43,21 +45,10 @@ class Gerenciador:
             print("Não Há Nenhum Contato com essas Informações!")
 
     def save_contatos(self):
-
         try:
-            with open("contatos.json", 'w') as lista:
-                contatos_json = []
-                config = Config()
-
-                for contato in self.contatos:
-                    
-                    contato = config.formatar_json(contato)
-
-                    contatos_json.append(contato)
-
-                json.dump(contatos_json, lista)
-                # json.dump([vars(contato) for contato in self.contatos], lista)
-
+            with open("contatos.json", 'w') as file:
+                contatos_formatados = [Config.formatar_contato(contato) for contato in self.contatos]
+                file.write(json.dumps(contatos_formatados, indent=2))
         except Exception as e:
             print(f"Erro Ao Salvar os Contatos: {e}")
 
