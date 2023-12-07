@@ -3,7 +3,7 @@
 import pytest
 from unittest.mock import patch, MagicMock
 from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Config
-
+import io
 import unittest
 
 class TestGerenciador(unittest.TestCase):
