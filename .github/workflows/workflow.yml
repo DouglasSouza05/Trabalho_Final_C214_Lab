@@ -9,7 +9,7 @@ on:
       - main
 
 env: 
-    YOUR_EMAIL_VARIABLE: eduardo.costa@ges.inatel.br
+    EMAIL_VARIABLE: eduardo.costa@ges.inatel.br
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.x  # Substitua "3.x" pela versão desejada do Python
+        python-version: 3.x
 
     - name: Install dependencies
       run: |
@@ -64,6 +64,7 @@ jobs:
         
     - name: Send notification email
       run: |
-          sh scripts/email.sh
+          sh /scripts/email.sh
+      shell: bash
       env:
-          YOUR_EMAIL_VARIABLE: ${{ secrets.YOUR_EMAIL_VARIABLE }}
+          YOUR_EMAIL_VARIABLE: ${{ secrets.EMAIL_VARIABLE }}

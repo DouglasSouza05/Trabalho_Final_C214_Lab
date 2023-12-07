@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Recupera o endereço de e-mail da variável de ambiente
-to_email="$YOUR_EMAIL_VARIABLE"
+to_email="$EMAIL_VARIABLE"
 
 subject="Pipeline terminou"
 body="Pipeline do projeto de C214 terminou"
