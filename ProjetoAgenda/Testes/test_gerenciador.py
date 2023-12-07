@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from . .Agenda.gerenciador import Gerenciador, Contato
+from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Contato
 
 @pytest.fixture
 def gerenciador_com_contatos():
