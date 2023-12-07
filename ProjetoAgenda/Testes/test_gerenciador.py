@@ -1,6 +1,8 @@
+# test_gerenciador.py
 import pytest
+import json
 from unittest.mock import patch, MagicMock
-from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Contato
+from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Contato, Config
 
 @pytest.fixture
 def gerenciador_com_contatos():
@@ -17,8 +19,8 @@ def test_add_contato():
 def test_list_contatos(capsys, gerenciador_com_contatos):
     gerenciador_com_contatos.list_contatos()
     captured = capsys.readouterr()
-    assert "John Doe" in captured.out
-    assert "Jane Doe" in captured.out
+    assert "John / Sobrenome: Doe /" in captured.out
+    assert "Jane / Sobrenome: Doe /" in captured.out
 
 def test_search_contato(gerenciador_com_contatos):
     contato = gerenciador_com_contatos.search_contato(nome="John", sobrenome="Doe")
