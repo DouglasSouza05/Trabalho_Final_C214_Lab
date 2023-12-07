@@ -27,7 +27,7 @@ class Main:
             elif escolha == "4":
                 self.remover_contato()
             elif escolha == "5":
-                self.deletar_todos_contatos()
+                self.deletar_agenda()
             elif escolha == "6":
                 print()
                 print("Saindo do programa. Até mais!")
@@ -94,7 +94,7 @@ class Main:
             print()
             print("Não Há Nenhum Contato com essas Informações!")
 
-    def deletar_todos_contatos(self):
+    def deletar_agenda(self):
 
         print()
         arquivo = "contatos.json"
@@ -104,6 +104,7 @@ class Main:
             print()
             if confirmacao.lower() == "s":
                 self.gerenciador.delete_contatos()
+                self.gerenciador.contatos = []
                 print("Arquivo 'contatos.json' Removido com Sucesso. \n")
                 print("Todos os Contatos Foram Excluídos.")
             else:
