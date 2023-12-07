@@ -19,8 +19,8 @@ def test_add_contato():
 def test_list_contatos(capsys, gerenciador_com_contatos):
     gerenciador_com_contatos.list_contatos()
     captured = capsys.readouterr()
-    assert "John / Sobrenome: Doe /" in captured.out
-    assert "Jane / Sobrenome: Doe /" in captured.out
+    assert "Nome: John / Sobrenome: Doe / Telefone: 123456789 / Empresa: ABC Inc. / Email: john.doe@example.com" in captured.out
+    assert "Nome: Jane / Sobrenome: Doe / Telefone: 987654321 / Empresa: XYZ Corp. / Email: jane.doe@example.com" in captured.out
 
 def test_search_contato(gerenciador_com_contatos):
     contato = gerenciador_com_contatos.search_contato(nome="John", sobrenome="Doe")
@@ -36,9 +36,18 @@ def test_remove_contato(gerenciador_com_contatos, capsys):
 
 @patch("builtins.open", new_callable=MagicMock)
 def test_save_contatos(mock_open, gerenciador_com_contatos):
+    mock_file = MagicMock()
+    mock_open.return_value.__enter__.return_value = mock_file
+
     gerenciador_com_contatos.save_contatos()
+
     mock_open.assert_called_once_with("contatos.json", "w")
-    mock_open().write.assert_called_once()
+    mock_file.write.assert_called_once()
+
+    # Verifica o que seria escrito no arquivo
+    expected_content = json.dumps([{"nome": "John", "sobrenome": "Doe", "telefone": "123456789", "empresa": "ABC Inc.", "email": "john.doe@example.com"},
+                                   {"nome": "Jane", "sobrenome": "Doe", "telefone": "987654321", "empresa": "XYZ Corp.", "email": "jane.doe@example.com"}], indent=2)
+    mock_file.write.assert_called_once_with(expected_content)
 
 @patch("os.remove")
 def test_delete_contatos(mock_remove, gerenciador_com_contatos):
