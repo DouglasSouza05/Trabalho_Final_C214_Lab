@@ -49,3 +49,4 @@ jobs:
     - name: Test with unittest
       run: |
         python -m unittest ProjetoAgenda/Testes/test_gerenciador.py
+        ls
