@@ -1,14 +1,13 @@
 # ProjetoAgenda/Testes/test_gerenciador.py
 
 import pytest
-import json
 from unittest.mock import patch, MagicMock
 from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Config
 
 @pytest.fixture
 def gerenciador_com_contatos(tmp_path):
-    gerenciador = Gerenciador(config=Config())
-    gerenciador.config.contatos_file = tmp_path / "contatos.json"
+    config = Config(contatos_file=tmp_path / "contatos.json")
+    gerenciador = Gerenciador(config=config)
     gerenciador.add_contato(nome="João", sobrenome="Silva", telefone="123456789", empresa="ABC LTDA", email="joao.silva@example.com")
     return gerenciador
 
