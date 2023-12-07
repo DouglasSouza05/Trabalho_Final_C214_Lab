@@ -15,10 +15,26 @@ class Main:
 
         gerenciador = Gerenciador()
 
-        gerenciador.add_contato(contato1)
-        gerenciador.add_contato(contato2)
+        gerenciador.add_contato("João", "Silva", "123456789")
+        gerenciador.add_contato("Maria", "Souza", "987654321")
 
         gerenciador.all_contatos()
+
+        gerenciador.remove_contato("Maria", "Souza")
+
+        gerenciador.all_contatos()
+
+        gerenciador.add_contato("Carlos", "Ferreira", "147258369", "XYZ Ltda")
+
+        gerenciador.all_contatos()
+
+        contato = gerenciador.search_contato(nome="Carlos", sobrenome="Ferreira")
+
+        if contato:
+            print("----------------------------------------------------------------------------------")
+            print(print(f"Nome: {contato.nome}, Sobrenome: {contato.sobrenome}, Telefone: {contato.telefone}, Empresa: {contato.empresa}, Email: {contato.email}"))
+        else:
+            "Contato não foi encontrado na Agenda!"
 
     # def info_contatos(self, contato):
     #     print(f"Nome: {contato.nome}, Sobrenome: {contato.sobrenome}, Telefone: {contato.telefone}, Empresa: {contato.empresa}, Email: {contato.email}")

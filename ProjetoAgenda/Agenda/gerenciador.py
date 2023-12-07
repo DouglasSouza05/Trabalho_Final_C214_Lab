@@ -5,7 +5,8 @@ class Gerenciador:
     def __init__(self):
         self.contatos = []
 
-    def add_contato(self, contato):
+    def add_contato(self, nome, sobrenome, telefone, empresa=None, email=None):
+        contato = Contato(nome=nome, sobrenome=sobrenome, telefone=telefone, empresa=empresa, email=email)
         self.contatos.append(contato)
         self.save_contatos()
 
@@ -13,7 +14,6 @@ class Gerenciador:
         for contato in self.contatos:
             print("----------------------------------------------------------------------------------")
             print((f"Nome: {contato.nome} / Sobrenome: {contato.sobrenome} / Telefone: {contato.telefone} / Empresa: {contato.empresa} / Email: {contato.email}"))
-        print("----------------------------------------------------------------------------------")
 
     def search_contato(self, nome, sobrenome):
         for contato in self.contatos:
