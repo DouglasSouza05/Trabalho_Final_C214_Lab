@@ -48,4 +48,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest pytest-cov 
-        pytest test_gerenciador.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+        pytest ProjetoAgenda/test_gerenciador.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
