@@ -6,8 +6,9 @@ from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Config
 
 @pytest.fixture
 def gerenciador_com_contatos(tmp_path):
-    config = Config(contatos_file=tmp_path / "contatos.json")
-    gerenciador = Gerenciador(config=config)
+    contatos_file = tmp_path / "contatos.json"
+    gerenciador = Gerenciador()
+    gerenciador.config = Config(contatos_file=contatos_file)
     gerenciador.add_contato(nome="João", sobrenome="Silva", telefone="123456789", empresa="ABC LTDA", email="joao.silva@example.com")
     return gerenciador
 

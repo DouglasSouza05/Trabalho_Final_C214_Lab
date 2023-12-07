@@ -7,7 +7,7 @@ import os
 
 class Gerenciador:
     def __init__(self):
-        self.contatos = contatos_file
+        self.contatos = []
 
     def add_contato(self, nome, sobrenome, telefone, empresa=None, email=None):
         contato = Contato(nome=nome, sobrenome=sobrenome, telefone=telefone, empresa=empresa, email=email)
@@ -45,11 +45,9 @@ class Gerenciador:
             print("Não Há Nenhum Contato com essas Informações!")
 
     def save_contatos(self):
-        config = Config()
-
         try:
             with open("contatos.json", 'w') as file:
-                contatos_formatados = [config.formatar_contato(contato) for contato in self.contatos]
+                contatos_formatados = [Config.formatar_contato(contato) for contato in self.contatos]
                 file.write(json.dumps(contatos_formatados, indent=2))
         except Exception as e:
             print(f"Erro Ao Salvar os Contatos: {e}")
