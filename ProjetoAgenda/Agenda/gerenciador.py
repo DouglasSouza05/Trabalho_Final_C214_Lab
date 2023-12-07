@@ -15,8 +15,11 @@ class Gerenciador:
     def list_contatos(self):
         config = Config()
 
-        for contato in self.contatos:
-            print(config.formatar_contato(contato))
+        if not self.contatos:
+            print("Não Há Contatos Salvos na Agenda!")
+        else:
+            for contato in self.contatos:
+                print(config.formatar_contato(contato))
 
     def search_contato(self, nome, sobrenome):
 
