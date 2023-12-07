@@ -44,7 +44,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install html-testRunner
 
     - name: Test with unittest
       run: |
         python -m unittest ProjetoAgenda/Testes/test_gerenciador.py
+          -v  # verbose output
+          -m report_html:test_reports/report.html  # save HTML report
