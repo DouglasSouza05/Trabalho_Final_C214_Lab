@@ -32,13 +32,18 @@ class TestGerenciador(unittest.TestCase):
         self.assertIsNotNone(contato_encontrado)
 
     def test_list_contatos(self):
-        # Testa se a listagem de contatos funciona corretamente.
-        self.gerenciador.add_contato(nome="John", sobrenome="Doe", telefone="123456789")
-        # Redireciona a saída padrão para um buffer para capturar a saída do print.
+        # Criar um contato para teste
+        self.gerenciador.add_contato("João", "Silva", "123456789")
+
+        # Redefinir a saída padrão para capturar a impressão
         with unittest.mock.patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             self.gerenciador.list_contatos()
-            output = mock_stdout.getvalue().strip()
-        self.assertIn("John Doe", output)
+
+        # Obter a saída capturada
+        output = mock_stdout.getvalue()
+
+        # Verificar se o contato está presente na saída
+        self.assertIn("João Silva", output)
 
     def test_delete_contatos(self):
         # Testa se a exclusão do arquivo de contatos funciona corretamente.
