@@ -1,4 +1,4 @@
-import unittest
+import unittest.mock
 from ProjetoAgenda.Agenda.gerenciador import Gerenciador
 
 class TestGerenciador(unittest.TestCase):
@@ -47,14 +47,14 @@ class TestGerenciador(unittest.TestCase):
 
     def test_arquivo_exist(self):
         # Testa se a verificação de existência de arquivo funciona corretamente.
-        with unittest.patch("os.path.exists") as mock_exists:
+        with unittest.mock.patch("os.path.exists") as mock_exists:
             mock_exists.return_value = True
             resultado = self.gerenciador.arquivo_exist("arquivo_existente.txt")
             self.assertTrue(resultado)
 
     def test_arquivo_nao_exist(self):
         # Testa se a verificação de inexistência de arquivo funciona corretamente.
-        with unittest.patch("os.path.exists") as mock_exists:
+        with unittest.mock.patch("os.path.exists") as mock_exists:
             mock_exists.return_value = False
             resultado = self.gerenciador.arquivo_exist("arquivo_inexistente.txt")
             self.assertFalse(resultado)
