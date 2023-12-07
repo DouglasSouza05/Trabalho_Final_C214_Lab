@@ -32,9 +32,11 @@ class Main:
 
         if contato:
             print("----------------------------------------------------------------------------------")
-            print(print(f"Nome: {contato.nome}, Sobrenome: {contato.sobrenome}, Telefone: {contato.telefone}, Empresa: {contato.empresa}, Email: {contato.email}"))
+            print(f"Nome: {contato.nome}, Sobrenome: {contato.sobrenome}, Telefone: {contato.telefone}, Empresa: {contato.empresa}, Email: {contato.email}")
         else:
             "Contato não foi encontrado na Agenda!"
+
+        gerenciador.remove_contato("João", "Silva")
 
     # def info_contatos(self, contato):
     #     print(f"Nome: {contato.nome}, Sobrenome: {contato.sobrenome}, Telefone: {contato.telefone}, Empresa: {contato.empresa}, Email: {contato.email}")
