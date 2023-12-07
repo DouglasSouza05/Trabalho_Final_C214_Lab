@@ -7,7 +7,7 @@ import os
 
 class Gerenciador:
     def __init__(self):
-        self.contatos = []
+        self.contatos = contatos_file
 
     def add_contato(self, nome, sobrenome, telefone, empresa=None, email=None):
         contato = Contato(nome=nome, sobrenome=sobrenome, telefone=telefone, empresa=empresa, email=email)
