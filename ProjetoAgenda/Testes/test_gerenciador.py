@@ -32,6 +32,7 @@ class TestGerenciador(unittest.TestCase):
         contato_encontrado = self.gerenciador.search_contato(nome="John", sobrenome="Doe")
         self.assertIsNotNone(contato_encontrado)
 
+
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_list_contatos(self, mock_stdout):
         # Criar um contato para teste
@@ -50,6 +51,8 @@ class TestGerenciador(unittest.TestCase):
         self.assertIn("João Silva", output)
         # Verificar se o contato None não causa erros
         self.assertNotIn("NoneType", output)
+        # Verificar se o método formatar_contato não é chamado com None
+        self.assertNotIn("None", output)
 
     def test_delete_contatos(self):
         # Testa se a exclusão do arquivo de contatos funciona corretamente.
