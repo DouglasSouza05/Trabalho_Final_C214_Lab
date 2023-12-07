@@ -1,4 +1,5 @@
 import unittest.mock
+import io
 from ProjetoAgenda.Agenda.gerenciador import Gerenciador
 
 class TestGerenciador(unittest.TestCase):
