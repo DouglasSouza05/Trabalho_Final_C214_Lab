@@ -50,7 +50,7 @@ jobs:
 
     - name: Test with unittest
       run: |
-        pytest ProjetoAgenda/Testes/test_gerenciador.py
+        pytest /ProjetoAgenda/Testes/test_gerenciador.py
         cd ProjetoAgenda
         cd Testes
         ls
