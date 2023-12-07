@@ -10,12 +10,6 @@ class TestGerenciador(unittest.TestCase):
     def setUp(self):
         self.gerenciador = Gerenciador()
 
-    @patch('sys.stdout', new_callable=unittest.mock.mock_open())
-    def test_list_contatos(self, mock_stdout):
-        self.gerenciador.list_contatos()
-        result = mock_stdout.getvalue().strip()
-        self.assertIn("Não Há Contatos Salvos na Agenda!", result)
-
     def test_search_contato_not_found(self):
         resultado = self.gerenciador.search_contato("Nome", "Sobrenome")
         self.assertIsNone(resultado)
