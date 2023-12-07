@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-      
+
 env: 
     YOUR_EMAIL_VARIABLE: eduardo.costa@ges.inatel.br
 
@@ -52,7 +52,7 @@ jobs:
 
     - name: Test with unittest
       run: |
-        python -m unittest ProjetoAgenda/Testes/test_gerenciador.py --xml-output relatorio_teste.xml
+        python -m unittest ProjetoAgenda/Testes/test_gerenciador.py
         
 
   notify:
