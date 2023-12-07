@@ -4,7 +4,6 @@ import unittest
 from unittest.mock import patch
 from ProjetoAgenda.Agenda.gerenciador import Gerenciador
 from ProjetoAgenda.Agenda.contatos import Contato
-import HtmlTestRunner
 
 
 class TestGerenciador(unittest.TestCase):
@@ -36,12 +35,4 @@ class TestGerenciador(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    # Carregue todos os testes do módulo test_gerenciador
-    loader = unittest.TestLoader()
-    suite = loader.loadTestsFromModule(test_gerenciador)
-
-    # Crie um runner com HtmlTestRunner
-    runner = HtmlTestRunner.HTMLTestRunner(output='test_reports/')
-
-    # Execute os testes usando o runner
-    runner.run(suite)
+    unittest.main()
