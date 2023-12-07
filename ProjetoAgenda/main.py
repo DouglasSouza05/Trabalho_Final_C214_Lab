@@ -1,5 +1,5 @@
-from Agenda.contatos import Contato
 from Agenda.gerenciador import Gerenciador
+from Agenda.config import Config
 
 class Main:
     def __init__(self):
@@ -55,6 +55,8 @@ class Main:
         self.gerenciador.list_contatos()
 
     def pesquisar_contato(self):
+        config = Config()
+
         nome = input("\nDigite o Nome do Contato: ")
         sobrenome = input("Digite o Sobrenome do Contato: ")
 
@@ -62,7 +64,7 @@ class Main:
 
         if contato:
             print("\n------- CONTATO ENCONTRADO -------\n")
-            print((f"Nome: {' '.join(contato.nome.strip().split())} / Sobrenome: {' '.join(contato.sobrenome.strip().split())} / Telefone: {' '.join(contato.telefone.strip().split())} / Empresa:{' '.join(contato.empresa.strip().split())} / Email: {' '.join(contato.email.strip().split())}"))
+            print(config.formatar_contato(contato))
         else:
             print("\nContato Não Encontrado na Agenda!")
 

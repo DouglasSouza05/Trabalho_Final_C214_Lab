@@ -1,4 +1,5 @@
 from .contatos import Contato
+from .config import Config
 import json
 import os
 
@@ -12,8 +13,10 @@ class Gerenciador:
         self.save_contatos()
 
     def list_contatos(self):
+        config = Config()
+
         for contato in self.contatos:
-            print((f"Nome: {' '.join(contato.nome.strip().split())} / Sobrenome: {' '.join(contato.sobrenome.strip().split())} / Telefone: {' '.join(contato.telefone.strip().split())} / Empresa: {' '.join(contato.empresa.strip().split())} / Email: {' '.join(contato.email.strip().split())}"))
+            print(config.formatar_contato(contato))
 
     def search_contato(self, nome, sobrenome):
 
@@ -37,29 +40,23 @@ class Gerenciador:
             print("Não Há Nenhum Contato com essas Informações!")
 
     def save_contatos(self):
-        with open("contatos.json", 'w') as lista:
-            contatos_json = []
 
-            for contato in self.contatos:
-                # Remover espaços extras antes de salvar
-                nome = ' '.join(contato.nome.strip().split())
-                sobrenome = ' '.join(contato.sobrenome.strip().split())
-                telefone = ' '.join(contato.telefone.strip().split())
-                empresa = ' '.join(contato.empresa.strip().split())
-                email = ' '.join(contato.email.strip().split())
+        try:
+            with open("contatos.json", 'w') as lista:
+                contatos_json = []
+                config = Config()
 
-                contato = {
-                    "nome": nome,
-                    "sobrenome": sobrenome,
-                    "telefone": telefone,
-                    "empresa": empresa,
-                    "email": email
-                }
-                contatos_json.append(contato)
+                for contato in self.contatos:
+                    
+                    contato = config.formatar_json(contato)
 
-            json.dump(contatos_json, lista)
+                    contatos_json.append(contato)
 
-            # json.dump([vars(contato) for contato in self.contatos], lista)
+                json.dump(contatos_json, lista)
+                # json.dump([vars(contato) for contato in self.contatos], lista)
+
+        except Exception as e:
+            print(f"Erro Ao Salvar os Contatos: {e}")
 
     def delete_contatos(self):
         try:
@@ -70,3 +67,6 @@ class Gerenciador:
 
     def arquivo_exist(self, arquivo):
         return os.path.exists(arquivo)
+    
+if __name__ == "__main__":
+    menu = Gerenciador()
