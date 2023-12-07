@@ -1,10 +1,5 @@
-# ProjetoAgenda/Testes/test_gerenciador.py
-
-import pytest
-from unittest.mock import patch, MagicMock
-from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Config
-import io
 import unittest
+from .gerenciador import Gerenciador
 
 class TestGerenciador(unittest.TestCase):
 
@@ -20,8 +15,14 @@ class TestGerenciador(unittest.TestCase):
     def test_remove_contato(self):
         # Testa se um contato é removido corretamente.
         self.gerenciador.add_contato(nome="John", sobrenome="Doe", telefone="123456789")
-        self.gerenciador.remove_contato(nome="John", sobrenome="Doe")
+        resultado = self.gerenciador.remove_contato(nome="John", sobrenome="Doe")
+        self.assertTrue(resultado)
         self.assertEqual(len(self.gerenciador.contatos), 0)
+
+    def test_remove_contato_inexistente(self):
+        # Testa a remoção de um contato que não existe.
+        resultado = self.gerenciador.remove_contato(nome="Inexistente", sobrenome="Contato")
+        self.assertFalse(resultado)
 
     def test_search_contato(self):
         # Testa se a busca por contato funciona corretamente.
@@ -44,7 +45,19 @@ class TestGerenciador(unittest.TestCase):
             self.gerenciador.delete_contatos()
             mock_remove.assert_called_once_with("contatos.json")
 
-    # Adicione mais testes conforme necessário.
+    def test_arquivo_exist(self):
+        # Testa se a verificação de existência de arquivo funciona corretamente.
+        with unittest.mock.patch("os.path.exists") as mock_exists:
+            mock_exists.return_value = True
+            resultado = self.gerenciador.arquivo_exist("arquivo_existente.txt")
+            self.assertTrue(resultado)
+
+    def test_arquivo_nao_exist(self):
+        # Testa se a verificação de inexistência de arquivo funciona corretamente.
+        with unittest.mock.patch("os.path.exists") as mock_exists:
+            mock_exists.return_value = False
+            resultado = self.gerenciador.arquivo_exist("arquivo_inexistente.txt")
+            self.assertFalse(resultado)
 
 if __name__ == '__main__':
     unittest.main()
