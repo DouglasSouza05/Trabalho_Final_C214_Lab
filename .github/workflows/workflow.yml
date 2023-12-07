@@ -64,6 +64,6 @@ jobs:
         
     - name: Send notification email
       run: |
-          .scripts/email.sh
+          ./scripts/email.sh
       env:
           YOUR_EMAIL_VARIABLE: ${{ secrets.YOUR_EMAIL_VARIABLE }}
