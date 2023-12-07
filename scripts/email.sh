@@ -1,10 +1,12 @@
-#!/bin/bash
-
+# Trabalho_Final_C214_Lab
+echo "Trabalho de C214 Lab"
 # Recupera o endereço de e-mail da variável de ambiente
-to_email="$YOUR_EMAIL_VARIABLE"
+notify-send "Notificação em paralelo rodando" &
 
-subject="Pipeline terminou"
-body="Pipeline do projeto de C214 terminou"
+# Executa o job
+./job.sh
 
-# Use o comando mail para enviar o e-mail
-echo "$body" | mail -s "$subject" "$to_email"
+# Fim do trabalho
+echo "Testes finalizados"
+sudo apt-get install mailutils
+echo "Enviando o e-mail do trabalho C214 Lab" | mail -s "Trabalho C214 Lab" ${EMAIL_LIST}
