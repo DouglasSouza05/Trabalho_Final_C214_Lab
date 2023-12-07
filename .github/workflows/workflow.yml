@@ -11,13 +11,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    needs: test
     
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v2
       with:
         python-version: 3.x  # Substitua "3.x" pela versão desejada do Python
 
@@ -30,6 +31,20 @@ jobs:
         pip install build
         python -m build
 
-    - name: Display built files
+  test: 
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
       run: |
-        ls dist
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Test with pytest
+      run: |
+        pip install pytest pytest-cov 
+        pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
