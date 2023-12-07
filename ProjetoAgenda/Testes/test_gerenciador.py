@@ -1,4 +1,5 @@
-import unittest.mock
+from unittest.mock import patch
+import unittest
 import io
 from ProjetoAgenda.Agenda.gerenciador import Gerenciador
 
