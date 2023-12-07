@@ -47,10 +47,6 @@ jobs:
         pip install html-testRunner
         pip install pytest
 
-
     - name: Test with unittest
       run: |
-        pytest /ProjetoAgenda/Testes/test_gerenciador.py
-        cd ProjetoAgenda
-        cd Testes
-        ls
+        python -m unittest ProjetoAgenda/Testes/test_gerenciador.py
