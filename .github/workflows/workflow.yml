@@ -27,7 +27,7 @@ jobs:
 
     - name: Build
       run: |
-        python main.py sdist bdist_wheel
+        python ProjetoAgenda/main.py sdist bdist_wheel
 
     - name: Display built files
       run: |
