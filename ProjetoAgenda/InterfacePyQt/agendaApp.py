@@ -14,6 +14,7 @@ sys.path.append(projeto_agenda_dir)
 
 from main import Main
 from Agenda.gerenciador import Gerenciador
+from Agenda.config import Config
 
 class NumerosLineEdit(QLineEdit):
     def __init__(self, parent=None):
@@ -50,6 +51,9 @@ class AgendaApp(QWidget):
         # Conectar botões aos métodos correspondentes
         self.adicionar_button.clicked.connect(self.adicionar_contato)
         self.listar_button.clicked.connect(self.listar_contatos)
+        self.pesquisar_button.clicked.connect(self.pesquisar_contato)
+        self.remover_button.clicked.connect(self.remover_contato)
+        self.deletar_button.clicked.connect(self.deletar_agenda)
 
         layout = QVBoxLayout()
         layout.addWidget(self.label)
@@ -80,6 +84,12 @@ class AgendaApp(QWidget):
         if not nome or not sobrenome or not telefone:
             QMessageBox.warning(self, "Aviso", "Por Favor, Preencha Nome, Sobrenome e Telefone. Esses Campos São Obrigatórios!")
             return
+        
+        if not empresa:
+            empresa = "None"
+
+        if not email:
+            email = "None"
 
         self.gerenciador.add_contato(nome, sobrenome, telefone, empresa, email)
         
@@ -89,11 +99,58 @@ class AgendaApp(QWidget):
         self.telefone_input.clear()
         self.empresa_input.clear()
         self.email_input.clear()
-
         self.result_text.clear()
+
         self.result_text.append("Contato Adicionado com Sucesso!")
 
     def listar_contatos(self):
+        pass
+
+    def pesquisar_contato(self):
+
+        config = Config()
+
+        nome = self.nome_input.text()
+        sobrenome = self.sobrenome_input.text()
+
+        if not nome or not sobrenome:
+            QMessageBox.warning(self, "Aviso", "Por Favor, Preencha Nome e Sobrenome para Pesquisar um Contato Específico.")
+            return
+        
+        contato = self.gerenciador.search_contato(nome, sobrenome)
+
+        self.nome_input.clear()
+        self.sobrenome_input.clear()
+        self.result_text.clear()
+
+        if contato:
+            self.result_text.append("------- CONTATO ENCONTRADO -------")
+            self.result_text.append("")
+            self.result_text.append(config.formatar_contato(contato))
+        else:
+            self.result_text.append("Contato Não Encontrado na Agenda!")
+
+    def remover_contato(self):
+
+        nome = self.nome_input.text()
+        sobrenome = self.sobrenome_input.text()
+
+        if not nome or not sobrenome:
+            QMessageBox.warning(self, "Aviso", "Por Favor, Preencha Nome e Sobrenome para Remover um Contato Específico.")
+            return
+        
+        contato = self.gerenciador.remove_contato(nome, sobrenome)
+
+        self.nome_input.clear()
+        self.sobrenome_input.clear()
+        self.result_text.clear()
+
+        if contato:
+            self.result_text.append("------- CONTATO REMOVIDO -------")
+        else:
+            self.result_text.append("Não Há Nenhum Contato com essas Informações!")
+
+    def deletar_agenda(self):
         pass
 
 if __name__ == "__main__":

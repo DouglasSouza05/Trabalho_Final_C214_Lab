@@ -38,11 +38,9 @@ class Gerenciador:
         if contato:
             self.contatos.remove(contato)
             self.save_contatos()
-            print()
-            print("Contato Removido com Sucesso!")
+            return True
         else:
-            print()
-            print("Não Há Nenhum Contato com essas Informações!")
+            return False
 
     def save_contatos(self):
         config = Config()

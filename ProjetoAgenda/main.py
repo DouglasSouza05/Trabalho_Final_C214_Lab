@@ -72,7 +72,14 @@ class Main:
         nome = input("\nDigite o Nome do Contato a ser Removido: ")
         sobrenome = input("Digite o Sobrenome do Contato a ser Removido: ")
 
-        self.gerenciador.remove_contato(nome, sobrenome)
+        contato = self.gerenciador.remove_contato(nome, sobrenome)
+
+        if contato:
+            print()
+            print("Contato Removido com Sucesso!")
+        else: 
+            print()
+            print("Não Há Nenhum Contato com essas Informações!")
 
     def deletar_todos_contatos(self):
         print()
