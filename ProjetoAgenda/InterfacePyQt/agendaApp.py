@@ -175,6 +175,7 @@ class AgendaApp(QWidget):
 
             if resposta == QMessageBox.Yes:
                 self.gerenciador.delete_contatos()
+                self.gerenciador.contatos = []
                 self.result_text.append("------- AGENDA DELETADA -------")
                 self.result_text.append("")
                 self.result_text.append("Arquivo contatos.json Removido com Sucesso.")
