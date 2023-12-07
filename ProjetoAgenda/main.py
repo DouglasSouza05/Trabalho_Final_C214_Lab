@@ -2,48 +2,92 @@ from Agenda.contatos import Contato
 from Agenda.gerenciador import Gerenciador
 
 class Main:
-    def run(self):
-        # Exemplos de uso do construtor
-        contato1 = Contato(nome="João", sobrenome="Silva", telefone="123456789")
-        contato2 = Contato(nome="Maria", sobrenome="Souza", telefone="987654321")
-        contato3 = Contato(nome="Carlos", sobrenome="Ferreira", telefone="987654321", empresa="XYZ Ltda")
+    def __init__(self):
+        self.gerenciador = Gerenciador()
 
-        # Imprimir informações dos contatos
-        # self.info_contatos(contato1)
-        # self.info_contatos(contato2)
-        # self.info_contatos(contato3)
+    def exibir_menu(self):
+        while True:
+            print("\n------- MENU -------\n")
+            print("1. Adicionar Contato na Agenda.")
+            print("2. Listar Contatos da Agenda.")
+            print("3. Pesquisar Contato Específico.")
+            print("4. Remover Contato Específico.")
+            print("5. Deletar Agenda de Contatos.")
+            print("6. Sair... \n")
 
-        gerenciador = Gerenciador()
+            escolha = input("Escolha uma opção (1-6): ")
 
-        gerenciador.add_contato("João", "Silva", "123456789")
-        gerenciador.add_contato("Maria", "Souza", "987654321")
+            if escolha == "1":
+                self.adicionar_contato()
+            elif escolha == "2":
+                self.listar_contatos()
+            elif escolha == "3":
+                self.pesquisar_contato()
+            elif escolha == "4":
+                self.remover_contato()
+            elif escolha == "5":
+                self.deletar_todos_contatos()
+            elif escolha == "6":
+                print()
+                print("Saindo do programa. Até mais!")
+                break
+            else:
+                print()
+                print("Escolha inválida. Tente novamente.")
 
-        gerenciador.list_contatos()
+    def adicionar_contato(self):
+        nome = input("\nDigite o Nome: ")
+        sobrenome = input("Digite o Sobrenome: ")
+        telefone = input("Digite o Telefone: ")
 
-        gerenciador.remove_contato("Maria", "Souza")
+        flag_empresa = input("Deseja Adicionar o Nome de uma Empresa? (s/n): ")
+        empresa = input("Digite a Empresa: ") if flag_empresa.lower() == "s" else "None"
 
-        gerenciador.list_contatos()
+        flag_email = input("Deseja Adicionar o Email? (s/n): ")
+        email = input("Digite o Email: ") if flag_email.lower() == "s" else "None"
+        print()
 
-        gerenciador.add_contato("Carlos", "Ferreira", "147258369", "XYZ Ltda")
+        self.gerenciador.add_contato(nome, sobrenome, telefone, empresa, email)
+        print("Contato Adicionado com Sucesso! Agenda Salva.")
 
-        gerenciador.list_contatos()
+    def listar_contatos(self):
+        print("\n------- LISTA DE CONTATOS -------\n")
+        self.gerenciador.list_contatos()
 
-        contato = gerenciador.search_contato(nome="Carlos", sobrenome="Ferreira")
+    def pesquisar_contato(self):
+        nome = input("\nDigite o Nome do Contato: ")
+        sobrenome = input("Digite o Sobrenome do Contato: ")
+
+        contato = self.gerenciador.search_contato(nome, sobrenome)
 
         if contato:
-            print("----------------------------------------------------------------------------------")
-            print(f"Nome: {contato.nome}, Sobrenome: {contato.sobrenome}, Telefone: {contato.telefone}, Empresa: {contato.empresa}, Email: {contato.email} \n")
+            print("\n------- CONTATO ENCONTRADO -------\n")
+            print((f"Nome: {' '.join(contato.nome.strip().split())} / Sobrenome: {' '.join(contato.sobrenome.strip().split())} / Telefone: {' '.join(contato.telefone.strip().split())} / Empresa:{' '.join(contato.empresa.strip().split())} / Email: {' '.join(contato.email.strip().split())}"))
         else:
-            "Contato não foi encontrado na Agenda! \n"
+            print("\nContato Não Encontrado na Agenda!")
 
-        gerenciador.remove_contato("João", "Silva")
+    def remover_contato(self):
+        nome = input("\nDigite o Nome do Contato a ser Removido: ")
+        sobrenome = input("Digite o Sobrenome do Contato a ser Removido: ")
 
-        gerenciador.delete_contatos()
+        self.gerenciador.remove_contato(nome, sobrenome)
 
-    # def info_contatos(self, contato):
-    #     print(f"Nome: {contato.nome}, Sobrenome: {contato.sobrenome}, Telefone: {contato.telefone}, Empresa: {contato.empresa}, Email: {contato.email}")
+    def deletar_todos_contatos(self):
+        print()
 
-# Instanciar e executar a classe Main
+        arquivo = "contatos.json"
+
+        if self.gerenciador.arquivo_exist(arquivo):
+            confirmacao = input("Tem Certeza de que Deseja Excluir Todos os Contatos? (s/n): ")
+            print()
+            if confirmacao.lower() == "s":
+                self.gerenciador.delete_contatos()
+                print("Todos os Contatos Foram Excluídos.")
+            else:
+                print("Operação Cancelada.")
+        else:
+            print(f"O Arquivo {arquivo} Não Existe.")
+
 if __name__ == "__main__":
-    main_instance = Main()
-    main_instance.run()
+    menu = Main()
+    menu.exibir_menu()
