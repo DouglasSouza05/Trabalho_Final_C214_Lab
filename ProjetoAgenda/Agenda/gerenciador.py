@@ -10,7 +10,10 @@ class Gerenciador:
         self.save_contatos()
 
     def all_contatos(self):
-        return self.contatos
+        for contato in self.contatos:
+            print("----------------------------------------------------------------------------------")
+            print((f"Nome: {contato.nome} / Sobrenome: {contato.sobrenome} / Telefone: {contato.telefone} / Empresa: {contato.empresa} / Email: {contato.email}"))
+        print("----------------------------------------------------------------------------------")
 
     def search_contato(self, nome, sobrenome):
         for contato in self.contatos:
