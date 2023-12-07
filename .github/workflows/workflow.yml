@@ -61,9 +61,13 @@ jobs:
     steps:
     - name: Install mailutils
       run: sudo apt-get install -y mailutils
+
+    - name: Grant execute permissions to the script
+      run: chmod +x scripts/email.sh
         
     - name: Send notification email
       run: |
+          cd scripts
           sh scripts/email.sh
       shell: bash
       env:
