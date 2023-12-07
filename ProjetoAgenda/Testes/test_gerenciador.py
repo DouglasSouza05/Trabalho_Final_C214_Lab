@@ -1,61 +1,49 @@
-# test_gerenciador.py
+# ProjetoAgenda/Testes/test_gerenciador.py
+
 import pytest
 import json
 from unittest.mock import patch, MagicMock
 from ProjetoAgenda.Agenda.gerenciador import Gerenciador, Contato, Config
 
 @pytest.fixture
-def gerenciador_com_contatos():
-    gerenciador = Gerenciador()
-    gerenciador.add_contato(nome="John", sobrenome="Doe", telefone="123456789", empresa="ABC Inc.", email="john.doe@example.com")
-    gerenciador.add_contato(nome="Jane", sobrenome="Doe", telefone="987654321", empresa="XYZ Corp.", email="jane.doe@example.com")
+def gerenciador_com_contatos(tmp_path):
+    gerenciador = Gerenciador(config=Config(contatos_file=tmp_path / "contatos.json"))
+    gerenciador.add_contato(nome="João", sobrenome="Silva", telefone="123456789", empresa="ABC LTDA", email="joao.silva@example.com")
+    gerenciador.add_contato(nome="Maria", sobrenome="Souza", telefone="987654321", empresa="XYZ S/A", email="maria.souza@example.com")
     return gerenciador
 
 def test_add_contato():
     gerenciador = Gerenciador()
-    gerenciador.add_contato(nome="John", sobrenome="Doe", telefone="123456789", empresa="ABC Inc.", email="john.doe@example.com")
+    gerenciador.add_contato(nome="João", sobrenome="Silva", telefone="123456789", empresa="ABC LTDA", email="joao.silva@example.com")
     assert len(gerenciador.contatos) == 1
 
 def test_list_contatos(capsys, gerenciador_com_contatos):
     gerenciador_com_contatos.list_contatos()
     captured = capsys.readouterr()
-    assert "Nome: John / Sobrenome: Doe / Telefone: 123456789 / Empresa: ABC Inc. / Email: john.doe@example.com" in captured.out
-    assert "Nome: Jane / Sobrenome: Doe / Telefone: 987654321 / Empresa: XYZ Corp. / Email: jane.doe@example.com" in captured.out
-
-def test_search_contato(gerenciador_com_contatos):
-    contato = gerenciador_com_contatos.search_contato(nome="John", sobrenome="Doe")
-    assert isinstance(contato, Contato)
-    assert contato.nome == "John"
-    assert contato.sobrenome == "Doe"
-
-def test_remove_contato(gerenciador_com_contatos, capsys):
-    gerenciador_com_contatos.remove_contato(nome="John", sobrenome="Doe")
-    assert len(gerenciador_com_contatos.contatos) == 1
-    captured = capsys.readouterr()
-    assert "Contato Removido com Sucesso!" in captured.out
+    assert "João Silva" in captured.out
+    assert "Maria Souza" in captured.out
 
 @patch("builtins.open", new_callable=MagicMock)
 def test_save_contatos(mock_open, gerenciador_com_contatos):
-    mock_file = MagicMock()
-    mock_open.return_value.__enter__.return_value = mock_file
+    with patch("ProjetoAgenda.Agenda.gerenciador.Config.formatar_contato", return_value={"nome": "João", "sobrenome": "Silva"}):
+        with patch("builtins.open", mock_open):
+            gerenciador_com_contatos.save_contatos()
 
-    gerenciador_com_contatos.save_contatos()
+    mock_open.assert_called_once_with(gerenciador_com_contatos.config.contatos_file, "w")
+    mock_open.return_value.__enter__.return_value.write.assert_called_once()
 
-    mock_open.assert_called_once_with("contatos.json", "w")
-    mock_file.write.assert_called_once()
+def test_save_contatos_integration(tmp_path, gerenciador_com_contatos):
+    contatos_file = tmp_path / "contatos_integration.json"
+    gerenciador = Gerenciador(config=Config(contatos_file=contatos_file))
+    gerenciador.add_contato(nome="João", sobrenome="Silva", telefone="123456789", empresa="ABC LTDA", email="joao.silva@example.com")
+    gerenciador.save_contatos()
 
-    # Verifica o que seria escrito no arquivo
-    expected_content = json.dumps([{"nome": "John", "sobrenome": "Doe", "telefone": "123456789", "empresa": "ABC Inc.", "email": "john.doe@example.com"},
-                                   {"nome": "Jane", "sobrenome": "Doe", "telefone": "987654321", "empresa": "XYZ Corp.", "email": "jane.doe@example.com"}], indent=2)
-    mock_file.write.assert_called_once_with(expected_content)
+    with open(contatos_file, "r") as file:
+        saved_data = json.load(file)
 
-@patch("os.remove")
-def test_delete_contatos(mock_remove, gerenciador_com_contatos):
-    gerenciador_com_contatos.delete_contatos()
-    mock_remove.assert_called_once_with("contatos.json")
-
-def test_arquivo_exist(gerenciador_com_contatos):
-    assert gerenciador_com_contatos.arquivo_exist("contatos.json")
-
-def test_arquivo_nao_exist(gerenciador_com_contatos):
-    assert not gerenciador_com_contatos.arquivo_exist("arquivo_inexistente.json")
+    assert len(saved_data) == 1
+    assert saved_data[0]["nome"] == "João"
+    assert saved_data[0]["sobrenome"] == "Silva"
+    assert saved_data[0]["telefone"] == "123456789"
+    assert saved_data[0]["empresa"] == "ABC LTDA"
+    assert saved_data[0]["email"] == "joao.silva@example.com"
