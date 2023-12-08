@@ -1,3 +1,5 @@
+[![CI de testes](https://github.com/DouglasSouza05/Trabalho_Final_C214_Lab/actions/workflows/workflow.yml/badge.svg)](https://github.com/DouglasSouza05/Trabalho_Final_C214_Lab/actions/workflows/workflow.yml)
+
 # Trabalho_Final_C214_Lab - Projeto Agenda
 
 ## Descrição
