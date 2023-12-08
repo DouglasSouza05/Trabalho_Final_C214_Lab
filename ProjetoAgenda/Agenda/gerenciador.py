@@ -1,7 +1,7 @@
 # ProjetoAgenda/Agenda/gerenciador.py
 
-from .contatos import Contato
-from .config import Config
+from contatos import Contato
+from config import Config
 import json
 import os
 
@@ -42,16 +42,21 @@ class Gerenciador:
             return False
 
     def save_contatos(self):
-
         config = Config()
 
         try:
             with open("contatos.json", 'w') as file:
-                contatos_formatados = [config.formatar_contato(
-                    contato) for contato in self.contatos]
-                file.write(json.dumps(contatos_formatados, indent=2))
+                contatos_formatados = [
+                    config.formatar_contato(contato) if contato is not None else None for contato in self.contatos
+                ]
+                contatos_formatados = [c for c in contatos_formatados if c is not None]  # Remova contatos None
+                if contatos_formatados:
+                    file.write(json.dumps(contatos_formatados, indent=2))
+                else:
+                    print("Nenhum contato para salvar.")
         except Exception as e:
             print(f"Erro Ao Salvar os Contatos: {e}")
+
 
     def delete_contatos(self):
         try:

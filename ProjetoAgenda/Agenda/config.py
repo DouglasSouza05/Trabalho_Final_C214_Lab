@@ -1,28 +1,30 @@
 class Config:
-
     def formatar_contato(self, contato):
+        if contato is not None and all(hasattr(contato, attr) for attr in ["nome", "sobrenome", "telefone", "empresa", "email"]):
+            return (f"Nome: {' '.join(str(contato.nome).strip().split())} / "
+                    f"Sobrenome: {' '.join(str(contato.sobrenome).strip().split())} / "
+                    f"Telefone: {' '.join(str(contato.telefone).strip().split())} / "
+                    f"Empresa: {' '.join(str(contato.empresa).strip().split())} / "
+                    f"Email: {' '.join(str(contato.email).strip().split())}")
+        else:
+            return ""
 
-        return (f"Nome: {' '.join(contato.nome.strip().split())} / "
-                f"Sobrenome: {' '.join(contato.sobrenome.strip().split())} / "
-                f"Telefone: {' '.join(contato.telefone.strip().split())} / "
-                f"Empresa: {' '.join(contato.empresa.strip().split())} / "
-                f"Email: {' '.join(contato.email.strip().split())}")
-    
     def formatar_json(self, contato):
+        if contato is not None and all(hasattr(contato, attr) for attr in ["nome", "sobrenome", "telefone", "empresa", "email"]):
+            nome = ' '.join(str(contato.nome).strip().split())
+            sobrenome = ' '.join(str(contato.sobrenome).strip().split())
+            telefone = ' '.join(str(contato.telefone).strip().split())
+            empresa = ' '.join(str(contato.empresa).strip().split())
+            email = ' '.join(str(contato.email).strip().split())
 
-        # Remover espaços extras antes de salvar
-        nome = ' '.join(contato.nome.strip().split())
-        sobrenome = ' '.join(contato.sobrenome.strip().split())
-        telefone = ' '.join(contato.telefone.strip().split())
-        empresa = ' '.join(contato.empresa.strip().split())
-        email = ' '.join(contato.email.strip().split())
+            contato_formatado = {
+                "nome": nome,
+                "sobrenome": sobrenome,
+                "telefone": telefone,
+                "empresa": empresa,
+                "email": email
+            }
 
-        contato = {
-            "nome": nome,
-            "sobrenome": sobrenome,
-            "telefone": telefone,
-            "empresa": empresa,
-            "email": email
-        }
-
-        return contato
+            return contato_formatado
+        else:
+            return {}
