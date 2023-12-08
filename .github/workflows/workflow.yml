@@ -51,9 +51,6 @@ jobs:
         run: |
           python -u ProjetoAgenda/Agenda/test_config.py
           python -u ProjetoAgenda/Agenda/test_contatos.py
-          python -m unittest discover -v -s ProjetoAgenda/Agenda -p '*_test.py'
-          python -m html_testRunner ProjetoAgenda/Agenda/test_config.py -o test_results.html
-
 
   notification:
     runs-on: ubuntu-latest
