@@ -45,5 +45,46 @@ class TestConfig(unittest.TestCase):
             "email": "alice.silva@example.com"
         })
 
+    def test_formatar_contato_diferente(self):
+        """
+        Testa se a função formatar_contato da classe Config gera resultados diferentes para contatos distintos.
+        """
+        config = Config()
+
+        contato1 = Contato(nome="Alice", sobrenome="Silva", telefone="987654321", empresa="Empresa Y", email="alice.silva@example.com")
+        contato2 = Contato(nome="Bob", sobrenome="Jones", telefone="123456789", empresa="Empresa Z", email="bob.jones@example.com")
+
+        resultado_contato1 = config.formatar_contato(contato1)
+        resultado_contato2 = config.formatar_contato(contato2)
+
+        self.assertNotEqual(resultado_contato1, resultado_contato2, "A formatação de contatos diferentes deveria ser diferente.")
+
+    def test_formatar_json_diferente(self):
+        """
+        Testa se a função formatar_json da classe Config gera resultados diferentes para contatos distintos.
+        """
+        config = Config()
+
+        contato1 = Contato(nome="Alice", sobrenome="Silva", telefone="987654321", empresa="Empresa Y", email="alice.silva@example.com")
+        contato2 = Contato(nome="Bob", sobrenome="Jones", telefone="123456789", empresa="Empresa Z", email="bob.jones@example.com")
+
+        resultado_json1 = config.formatar_json(contato1)
+        resultado_json2 = config.formatar_json(contato2)
+
+        self.assertNotEqual(resultado_json1, resultado_json2, "O JSON gerado para contatos diferentes deveria ser diferente.")
+
+    def test_formatar_json_e_contato(self):
+        """
+        Testa se a função formatar_json e formatar_contato da classe Config geram resultados diferentes para o mesmo contato.
+        """
+        config = Config()
+
+        contato = Contato(nome="Alice", sobrenome="Silva", telefone="987654321", empresa="Empresa Y", email="alice.silva@example.com")
+
+        resultado_json = config.formatar_json(contato)
+        resultado_contato = config.formatar_contato(contato)
+
+        self.assertNotEqual(resultado_json, resultado_contato, "O JSON e a formatação de contato para o mesmo contato deveriam ser diferentes.")
+
 if __name__ == '__main__':
     unittest.main()

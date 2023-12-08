@@ -28,5 +28,17 @@ class TestContato(unittest.TestCase):
         self.assertEqual(self.contato.get_empresa(), "EmpresaY")
         self.assertEqual(self.contato.get_email(), "maria.oliveira@email.com")
 
+    def test_nome_diferente(self):
+        outro_contato = Contato("Maria", "Silva", "123456789", "EmpresaX", "maria.silva@email.com")
+        self.assertNotEqual(self.contato, outro_contato)
+
+    def test_sobrenome_diferente(self):
+        outro_contato = Contato("João", "Oliveira", "123456789", "EmpresaX", "joao.oliveira@email.com")
+        self.assertNotEqual(self.contato, outro_contato)
+
+    def test_telefone_diferente(self):
+        outro_contato = Contato("João", "Silva", "987654321", "EmpresaX", "joao.silva@email.com")
+        self.assertNotEqual(self.contato, outro_contato)
+        
 if __name__ == '__main__':
     unittest.main()
