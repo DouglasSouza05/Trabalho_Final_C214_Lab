@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="TestConfig-20231208003033" tests="5" file=".py" time="0.005" timestamp="2023-12-08T00:30:33" failures="0" errors="0" skipped="0">
+		<testcase classname="TestConfig" name="test_formatar_contato" time="0.003" timestamp="2023-12-08T00:30:33" file="ProjetoAgenda\Agenda\test_config.py" line="15">
+			<!--
+        Testa se a função formatar_contato da classe Config formata corretamente um objeto Contato.
+        -->
+		</testcase>
+		<testcase classname="TestConfig" name="test_formatar_contato_diferente" time="0.000" timestamp="2023-12-08T00:30:33" file="ProjetoAgenda\Agenda\test_config.py" line="49">
+			<!--
+        Testa se a função formatar_contato da classe Config gera resultados diferentes para contatos distintos.
+        -->
+		</testcase>
+		<testcase classname="TestConfig" name="test_formatar_json" time="0.001" timestamp="2023-12-08T00:30:33" file="ProjetoAgenda\Agenda\test_config.py" line="29">
+			<!--
+        Testa se a função formatar_json da classe Config gera corretamente um JSON a partir de um objeto Contato.
+        -->
+		</testcase>
+		<testcase classname="TestConfig" name="test_formatar_json_diferente" time="0.000" timestamp="2023-12-08T00:30:33" file="ProjetoAgenda\Agenda\test_config.py" line="63">
+			<!--
+        Testa se a função formatar_json da classe Config gera resultados diferentes para contatos distintos.
+        -->
+		</testcase>
+		<testcase classname="TestConfig" name="test_formatar_json_e_contato" time="0.001" timestamp="2023-12-08T00:30:33" file="ProjetoAgenda\Agenda\test_config.py" line="77">
+			<!--
+        Testa se a função formatar_json e formatar_contato da classe Config geram resultados diferentes para o mesmo contato.
+        -->
+		</testcase>
+	</testsuite>
+</testsuites>
