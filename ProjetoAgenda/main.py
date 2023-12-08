@@ -1,6 +1,7 @@
 from Agenda.config import Config
 from Agenda.gerenciador import Gerenciador
 
+
 class Main:
     def __init__(self):
         self.gerenciador = Gerenciador()

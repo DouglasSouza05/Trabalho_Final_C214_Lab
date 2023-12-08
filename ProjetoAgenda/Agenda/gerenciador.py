@@ -1,7 +1,7 @@
 # ProjetoAgenda/Agenda/gerenciador.py
 
-from contatos import Contato
-from config import Config
+from .contatos import Contato
+from .config import Config
 import json
 import os
 
