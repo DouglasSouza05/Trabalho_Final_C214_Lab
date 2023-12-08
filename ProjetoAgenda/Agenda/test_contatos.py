@@ -1,5 +1,6 @@
 import unittest
 from contatos import Contato
+import xmlrunner
 
 class TestContato(unittest.TestCase):
     def setUp(self):
@@ -41,4 +42,6 @@ class TestContato(unittest.TestCase):
         self.assertNotEqual(self.contato, outro_contato)
         
 if __name__ == '__main__':
-    unittest.main()
+    with open('resultados_testes.xml', 'wb') as output:
+        runner = xmlrunner.XMLTestRunner(output=output)
+        unittest.main(testRunner=runner)

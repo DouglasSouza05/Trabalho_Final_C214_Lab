@@ -1,5 +1,6 @@
 import unittest
 from config import Config
+import xmlrunner
 
 class Contato:
     def __init__(self, nome, sobrenome, telefone, empresa, email):
@@ -87,4 +88,6 @@ class TestConfig(unittest.TestCase):
         self.assertNotEqual(resultado_json, resultado_contato, "O JSON e a formatação de contato para o mesmo contato deveriam ser diferentes.")
 
 if __name__ == '__main__':
-    unittest.main()
+    with open('resultados_testes.xml', 'wb') as output:
+        runner = xmlrunner.XMLTestRunner(output=output)
+        unittest.main(testRunner=runner)
