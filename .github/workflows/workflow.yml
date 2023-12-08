@@ -51,10 +51,8 @@ jobs:
         run: |
           python -u ProjetoAgenda/Agenda/test_config.py
           python -u ProjetoAgenda/Agenda/test_contatos.py
-          pip install unittest
-          pip install html-testRunner
-          python -m unittest discover -v -s . -p '*_test.py'
-          python -m html_testRunner your_test_module.py -o test_results.html
+          python -m unittest discover -v -s ProjetoAgenda/Agenda -p '*_test.py'
+          python -m html_testRunner ProjetoAgenda/Agenda/test_config.py -o test_results.html
 
 
   notification:
