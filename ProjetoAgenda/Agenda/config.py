@@ -20,7 +20,7 @@ class Config:
             contato_formatado = {
                 "nome": nome,
                 "sobrenome": sobrenome,
-                "telefone": telefone,
+                "telefone": telefone, 
                 "empresa": empresa,
                 "email": email
             }
