@@ -42,6 +42,6 @@ class TestContato(unittest.TestCase):
         self.assertNotEqual(self.contato, outro_contato)
         
 if __name__ == '__main__':
-    with open('resultados_testes.xml', 'wb') as output:
+    with open('resultados_testes_contatos.xml', 'wb') as output:
         runner = xmlrunner.XMLTestRunner(output=output)
         unittest.main(testRunner=runner)
