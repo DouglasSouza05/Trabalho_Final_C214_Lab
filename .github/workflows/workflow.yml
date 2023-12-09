@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: "3.9"
 
@@ -56,11 +56,11 @@ jobs:
   notification:
     runs-on: ubuntu-latest
     env:
-      EMAIL_LIST: eduardo.costa@ges.inatel.br, lucas.resende@ges.inatel.br
+      EMAIL_LIST: eduardo.costa@ges.inatel.br, lucas.resende@ges.inatel.br, lucas.brandao@ges.inatel.br
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python 3.9
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: "3.9"
       - name: Install dependencies
