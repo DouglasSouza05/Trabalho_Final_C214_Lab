@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.7"
+          python-version: "3.9"
 
       - name: Install dependencies
         run: |
@@ -40,7 +40,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: "3.9"
 
       - name: Install dependencies
         run: |
@@ -59,10 +59,10 @@ jobs:
       EMAIL_LIST: eduardo.costa@ges.inatel.br, lucas.resende@ges.inatel.br
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.7
+      - name: Set up Python 3.9
         uses: actions/setup-python@v3
         with:
-          python-version: "3.7"
+          python-version: "3.9"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
