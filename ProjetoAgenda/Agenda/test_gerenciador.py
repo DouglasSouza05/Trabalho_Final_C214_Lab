@@ -1,6 +1,7 @@
 import unittest
-from contatos import Contato
 from gerenciador import Gerenciador
+import xmlrunner
+
 
 class TestGerenciador(unittest.TestCase):
 
