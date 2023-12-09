@@ -65,8 +65,7 @@ jobs:
           python-version: "3.9"
       - name: Install dependencies
         run: |
-          pip install --upgrade pip setuptools
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Executar script shell
         run: sh scripts/email.sh
