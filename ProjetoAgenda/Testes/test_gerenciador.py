@@ -50,4 +50,7 @@ class TestGerenciador(unittest.TestCase):
         self.assertEqual(len(self.gerenciador.contatos), contatos_iniciais, "A lista de contatos não deveria ser modificada ao remover um contato inexistente.")
 
 if __name__ == '__main__':
-    unittest.main()
+    with open('resultados_testes_gerenciador.xml', 'wb') as output:
+        runner = xmlrunner.XMLTestRunner(output=output)
+        unittest.main(testRunner=runner)
+

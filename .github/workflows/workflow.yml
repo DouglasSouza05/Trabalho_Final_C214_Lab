@@ -51,6 +51,7 @@ jobs:
         run: |
           python -u ProjetoAgenda/Agenda/test_config.py
           python -u ProjetoAgenda/Agenda/test_contatos.py
+          python -u ProjetoAgenda/Agenda/test_gerenciador.py
 
   notification:
     runs-on: ubuntu-latest
