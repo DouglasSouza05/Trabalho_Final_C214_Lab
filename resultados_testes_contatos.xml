@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-	<testsuite name="TestContato-20231209135020" tests="5" file=".py" time="0.004" timestamp="2023-12-09T13:50:20" failures="0" errors="0" skipped="0">
-		<testcase classname="TestContato" name="test_getters" time="0.003" timestamp="2023-12-09T13:50:20" file="ProjetoAgenda\Testes\test_contatos.py" line="21"/>
-		<testcase classname="TestContato" name="test_nome_diferente" time="0.000" timestamp="2023-12-09T13:50:20" file="ProjetoAgenda\Testes\test_contatos.py" line="43"/>
-		<testcase classname="TestContato" name="test_setters" time="0.001" timestamp="2023-12-09T13:50:20" file="ProjetoAgenda\Testes\test_contatos.py" line="28"/>
-		<testcase classname="TestContato" name="test_sobrenome_diferente" time="0.000" timestamp="2023-12-09T13:50:20" file="ProjetoAgenda\Testes\test_contatos.py" line="47"/>
-		<testcase classname="TestContato" name="test_telefone_diferente" time="0.000" timestamp="2023-12-09T13:50:20" file="ProjetoAgenda\Testes\test_contatos.py" line="51"/>
+	<testsuite name="TestContato-20231209142546" tests="5" file=".py" time="0.009" timestamp="2023-12-09T14:25:46" failures="0" errors="0" skipped="0">
+		<testcase classname="TestContato" name="test_getters" time="0.006" timestamp="2023-12-09T14:25:46" file="ProjetoAgenda\Testes\test_contatos.py" line="22"/>
+		<testcase classname="TestContato" name="test_nome_diferente" time="0.001" timestamp="2023-12-09T14:25:46" file="ProjetoAgenda\Testes\test_contatos.py" line="44"/>
+		<testcase classname="TestContato" name="test_setters" time="0.001" timestamp="2023-12-09T14:25:46" file="ProjetoAgenda\Testes\test_contatos.py" line="29"/>
+		<testcase classname="TestContato" name="test_sobrenome_diferente" time="0.001" timestamp="2023-12-09T14:25:46" file="ProjetoAgenda\Testes\test_contatos.py" line="48"/>
+		<testcase classname="TestContato" name="test_telefone_diferente" time="0.000" timestamp="2023-12-09T14:25:46" file="ProjetoAgenda\Testes\test_contatos.py" line="52"/>
 	</testsuite>
 </testsuites>
