@@ -1,6 +1,17 @@
+import os, sys
 import unittest
-from config import Config
 import xmlrunner
+
+# Obtém o caminho do diretório do script atual
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Obtém o caminho do diretório "ProjetoAgenda"
+projeto_agenda_dir = os.path.abspath(os.path.join(script_dir, ".."))
+
+# Adiciona o diretório "ProjetoAgenda" ao caminho do Python
+sys.path.append(projeto_agenda_dir)
+
+from Agenda.config import Config
 
 class Contato:
     def __init__(self, nome, sobrenome, telefone, empresa, email):
