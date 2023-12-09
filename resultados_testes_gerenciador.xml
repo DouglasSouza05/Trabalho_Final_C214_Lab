@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-	<testsuite name="TestGerenciador-20231209142548" tests="6" file=".py" time="0.015" timestamp="2023-12-09T14:25:48" failures="0" errors="0" skipped="0">
-		<testcase classname="TestGerenciador" name="test_adicionar_contato" time="0.008" timestamp="2023-12-09T14:25:48" file="ProjetoAgenda\Testes\test_gerenciador.py" line="23"/>
-		<testcase classname="TestGerenciador" name="test_listar_contatos" time="0.001" timestamp="2023-12-09T14:25:48" file="ProjetoAgenda\Testes\test_gerenciador.py" line="27"/>
-		<testcase classname="TestGerenciador" name="test_pesquisar_contato_existente" time="0.002" timestamp="2023-12-09T14:25:48" file="ProjetoAgenda\Testes\test_gerenciador.py" line="32"/>
-		<testcase classname="TestGerenciador" name="test_pesquisar_contato_inexistente" time="0.000" timestamp="2023-12-09T14:25:48" file="ProjetoAgenda\Testes\test_gerenciador.py" line="37"/>
-		<testcase classname="TestGerenciador" name="test_remover_contato_existente" time="0.003" timestamp="2023-12-09T14:25:48" file="ProjetoAgenda\Testes\test_gerenciador.py" line="41">
+	<testsuite name="TestGerenciador-20231209143444" tests="6" file=".py" time="0.016" timestamp="2023-12-09T14:34:44" failures="0" errors="0" skipped="0">
+		<testcase classname="TestGerenciador" name="test_adicionar_contato" time="0.006" timestamp="2023-12-09T14:34:44" file="ProjetoAgenda\Testes\test_gerenciador.py" line="23"/>
+		<testcase classname="TestGerenciador" name="test_listar_contatos" time="0.002" timestamp="2023-12-09T14:34:44" file="ProjetoAgenda\Testes\test_gerenciador.py" line="27"/>
+		<testcase classname="TestGerenciador" name="test_pesquisar_contato_existente" time="0.003" timestamp="2023-12-09T14:34:44" file="ProjetoAgenda\Testes\test_gerenciador.py" line="32"/>
+		<testcase classname="TestGerenciador" name="test_pesquisar_contato_inexistente" time="0.001" timestamp="2023-12-09T14:34:44" file="ProjetoAgenda\Testes\test_gerenciador.py" line="37"/>
+		<testcase classname="TestGerenciador" name="test_remover_contato_existente" time="0.003" timestamp="2023-12-09T14:34:44" file="ProjetoAgenda\Testes\test_gerenciador.py" line="41">
 			<system-out><![CDATA[Nenhum contato para salvar.
 ]]></system-out>
 		</testcase>
-		<testcase classname="TestGerenciador" name="test_remover_contato_inexistente" time="0.001" timestamp="2023-12-09T14:25:48" file="ProjetoAgenda\Testes\test_gerenciador.py" line="47"/>
+		<testcase classname="TestGerenciador" name="test_remover_contato_inexistente" time="0.001" timestamp="2023-12-09T14:34:44" file="ProjetoAgenda\Testes\test_gerenciador.py" line="47"/>
 	</testsuite>
 </testsuites>
