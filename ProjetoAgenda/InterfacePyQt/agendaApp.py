@@ -12,7 +12,6 @@ projeto_agenda_dir = os.path.abspath(os.path.join(script_dir, ".."))
 # Adiciona o diretório "ProjetoAgenda" ao caminho do Python
 sys.path.append(projeto_agenda_dir)
 
-from main import Main
 from Agenda.gerenciador import Gerenciador
 from Agenda.config import Config
 

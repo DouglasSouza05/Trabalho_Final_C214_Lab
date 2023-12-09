@@ -13,7 +13,6 @@ sys.path.append(projeto_agenda_dir)
 
 from Agenda.gerenciador import Gerenciador
 
-
 class TestGerenciador(unittest.TestCase):
 
     def setUp(self):
