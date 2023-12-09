@@ -98,7 +98,7 @@ class TestConfig(unittest.TestCase):
 
         self.assertNotEqual(resultado_json, resultado_contato, "O JSON e a formatação de contato para o mesmo contato deveriam ser diferentes.")
 
-if __name__ == '__main__':
-    with open('resultados_testes_config.xml', 'wb') as output:
+if __name__ == "__main__":
+    with open("resultados_testes_config.xml", "wb") as output:
         runner = xmlrunner.XMLTestRunner(output=output)
         unittest.main(testRunner=runner)

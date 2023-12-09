@@ -14,6 +14,7 @@ sys.path.append(projeto_agenda_dir)
 from Agenda.contatos import Contato
 
 class TestContato(unittest.TestCase):
+
     def setUp(self):
         # Cria um contato para uso nos testes
         self.contato = Contato("João", "Silva", "123456789", "EmpresaX", "joao.silva@email.com")
@@ -52,7 +53,7 @@ class TestContato(unittest.TestCase):
         outro_contato = Contato("João", "Silva", "987654321", "EmpresaX", "joao.silva@email.com")
         self.assertNotEqual(self.contato, outro_contato)
         
-if __name__ == '__main__':
-    with open('resultados_testes_contatos.xml', 'wb') as output:
+if __name__ == "__main__":
+    with open("resultados_testes_contatos.xml", "wb") as output:
         runner = xmlrunner.XMLTestRunner(output=output)
         unittest.main(testRunner=runner)
