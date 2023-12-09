@@ -66,7 +66,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pywin32==306
-          pip install pywin32
           pip install --upgrade pip setuptools
           pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
