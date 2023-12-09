@@ -49,9 +49,9 @@ jobs:
 
       - name: Test with unittest
         run: |
-          python -u ProjetoAgenda/Agenda/Testes/test_config.py
-          python -u ProjetoAgenda/Agenda/Testes/test_contatos.py
-          python -u ProjetoAgenda/Agenda/Testes/test_gerenciador.py
+          python -u ProjetoAgenda/Testes/test_config.py
+          python -u ProjetoAgenda/Testes/test_contatos.py
+          python -u ProjetoAgenda/Testes/test_gerenciador.py
 
   notification:
     runs-on: ubuntu-latest
