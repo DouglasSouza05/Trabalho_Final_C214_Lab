@@ -53,11 +53,13 @@ jobs:
           python -u ProjetoAgenda/Testes/test_contatos.py
           python -u ProjetoAgenda/Testes/test_gerenciador.py
 
-  notification:
-    runs-on: ubuntu-latest
-    env:
-      EMAIL_LIST: eduardo.costa@ges.inatel.br, lucas.resende@ges.inatel.br, lucas.brandao@ges.inatel.br
-    steps:
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
+      notificacao:
+      runs-on: ubuntu-latest
+       
+      env:
+        EMAIL_LIST: lucas.brandao@ges.inatel.br
+        
+      steps:
+      - name: Executa comandos
+        uses: actions/checkout@v3
       - run: sh scripts/email.sh
