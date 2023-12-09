@@ -65,6 +65,7 @@ jobs:
           python-version: "3.9"
       - name: Install dependencies
         run: |
+          pip install  pywin32
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Executar script shell
