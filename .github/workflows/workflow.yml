@@ -53,13 +53,13 @@ jobs:
           python -u ProjetoAgenda/Testes/test_contatos.py
           python -u ProjetoAgenda/Testes/test_gerenciador.py
 
-      notificacao:
-      runs-on: ubuntu-latest
-       
-      env:
-        EMAIL_LIST: lucas.brandao@ges.inatel.br
-        
-      steps:
+  notificacao:
+    runs-on: ubuntu-latest
+
+    env:
+      EMAIL_LIST: lucas.brandao@ges.inatel.br
+
+    steps:
       - name: Executa comandos
         uses: actions/checkout@v3
       - run: sh scripts/email.sh
