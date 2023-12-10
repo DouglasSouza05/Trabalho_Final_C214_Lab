@@ -6,6 +6,8 @@
 
 Este projeto consiste em uma agenda de contatos com interface gráfica desenvolvida em PyQt5. Oferece funcionalidades para adicionar, listar, pesquisar e remover contatos.
 
+<img src = "Telaprincipal.png" />
+
 ## Instalação
 
 Certifique-se de ter o Python instalado. Em seguida, instale as dependências executando:
