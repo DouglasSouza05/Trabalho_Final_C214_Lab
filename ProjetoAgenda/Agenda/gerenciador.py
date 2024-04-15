@@ -57,7 +57,6 @@ class Gerenciador:
         except Exception as e:
             print(f"Erro Ao Salvar os Contatos: {e}")
 
-
     def delete_contatos(self):
         try:
             os.remove("contatos.json")
@@ -66,7 +65,6 @@ class Gerenciador:
 
     def arquivo_exist(self, arquivo):
         return os.path.exists(arquivo)
-
 
 if __name__ == "__main__":
     menu = Gerenciador()
