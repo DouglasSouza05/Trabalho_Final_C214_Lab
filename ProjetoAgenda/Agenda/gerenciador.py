@@ -14,11 +14,8 @@ class Gerenciador:
         contato = Contato(nome=nome, sobrenome=sobrenome,
                           telefone=telefone, empresa=empresa, email=email)
         self.contatos.append(contato)
+        print(self.contatos)
         self.save_contatos()
-
-    def list_contatos(self):
-
-        return self.contatos
 
     def search_contato(self, nome, sobrenome):
 
@@ -49,7 +46,7 @@ class Gerenciador:
                 contatos_formatados = [
                     config.formatar_contato(contato) if contato is not None else None for contato in self.contatos
                 ]
-                contatos_formatados = [c for c in contatos_formatados if c is not None]  # Remova contatos None
+                contatos_formatados = [c for c in contatos_formatados if c is not None]  # Remove contatos None
                 if contatos_formatados:
                     file.write(json.dumps(contatos_formatados, indent=2))
                 else:

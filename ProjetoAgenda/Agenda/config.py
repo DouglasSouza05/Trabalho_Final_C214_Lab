@@ -1,4 +1,4 @@
-class Config: 
+class Config:
     def formatar_contato(self, contato):
         if contato is not None and all(hasattr(contato, attr) for attr in ["nome", "sobrenome", "telefone", "empresa", "email"]):
             return (f"Nome: {' '.join(str(contato.nome).strip().split())} / "
@@ -20,7 +20,7 @@ class Config:
             contato_formatado = {
                 "nome": nome,
                 "sobrenome": sobrenome,
-                "telefone": telefone, 
+                "telefone": telefone,
                 "empresa": empresa,
                 "email": email
             }

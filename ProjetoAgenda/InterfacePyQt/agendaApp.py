@@ -27,10 +27,11 @@ class AgendaApp(QWidget):
         self.gerenciador = Gerenciador()
 
         self.setWindowTitle("Aplicativo Agenda de Contatos")
-        self.setGeometry(200, 200, 800, 600)
+        self.setGeometry(200, 200, 400, 600)
 
         # Widgets
-        self.label = QLabel("Entre com o Nome, Sobrenome, Telefone, Empresa e Email do Contato, respectivamente. OBs: Empresa e Email são Opcionais!")
+        self.label = QLabel("Entre com o Nome, Sobrenome, Telefone, Empresa e Email do Contato, respectivamente.")
+        self.obs = QLabel("OBs: Empresa e Email são Opcionais!")
         self.nome_input = QLineEdit()
         self.sobrenome_input = QLineEdit()
         self.telefone_input = NumerosLineEdit()
@@ -56,6 +57,7 @@ class AgendaApp(QWidget):
 
         layout = QVBoxLayout()
         layout.addWidget(self.label)
+        layout.addWidget(self.obs)
         layout.addWidget(self.nome_input)
         layout.addWidget(self.sobrenome_input)
         layout.addWidget(self.telefone_input)
@@ -72,7 +74,7 @@ class AgendaApp(QWidget):
         self.setLayout(layout)
 
     def adicionar_contato(self):
-        
+
         nome = self.nome_input.text()
         sobrenome = self.sobrenome_input.text()
         telefone = self.telefone_input.text()
@@ -83,7 +85,7 @@ class AgendaApp(QWidget):
         if not nome or not sobrenome or not telefone:
             QMessageBox.warning(self, "Aviso", "Por Favor, Preencha Nome, Sobrenome e Telefone. Esses Campos São Obrigatórios!")
             return
-        
+
         if not empresa:
             empresa = "None"
 
@@ -91,7 +93,7 @@ class AgendaApp(QWidget):
             email = "None"
 
         self.gerenciador.add_contato(nome, sobrenome, telefone, empresa, email)
-        
+
         # Limpar os campos após adicionar o contato
         self.nome_input.clear()
         self.sobrenome_input.clear()
@@ -125,7 +127,7 @@ class AgendaApp(QWidget):
         if not nome or not sobrenome:
             QMessageBox.warning(self, "Aviso", "Por Favor, Preencha Nome e Sobrenome para Pesquisar um Contato Específico.")
             return
-        
+
         contato = self.gerenciador.search_contato(nome, sobrenome)
 
         self.nome_input.clear()
@@ -147,7 +149,7 @@ class AgendaApp(QWidget):
         if not nome or not sobrenome:
             QMessageBox.warning(self, "Aviso", "Por Favor, Preencha Nome e Sobrenome para Remover um Contato Específico.")
             return
-        
+
         contato = self.gerenciador.remove_contato(nome, sobrenome)
 
         self.nome_input.clear()
@@ -160,7 +162,7 @@ class AgendaApp(QWidget):
             self.result_text.append("Não Há Nenhum Contato com essas Informações!")
 
     def deletar_agenda(self):
-        
+
         arquivo = "contatos.json"
 
         self.nome_input.clear()
@@ -182,7 +184,7 @@ class AgendaApp(QWidget):
                 self.result_text.append("Operação Cancelada.")
         else:
             self.result_text.append(f"O Arquivo {arquivo} Não Existe.")
-            
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
