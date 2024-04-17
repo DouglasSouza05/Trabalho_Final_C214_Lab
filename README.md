@@ -1,10 +1,10 @@
-[![CI de testes](https://github.com/DouglasSouza05/Trabalho_Final_C214_Lab/actions/workflows/workflow.yml/badge.svg)](https://github.com/DouglasSouza05/Trabalho_Final_C214_Lab/actions/workflows/workflow.yml)
+[![CI de Testes](https://github.com/DouglasSouza05/Trabalho_Final_C214_Lab/actions/workflows/workflow.yml/badge.svg)](https://github.com/DouglasSouza05/Trabalho_Final_C214_Lab/actions/workflows/workflow.yml)
 
 # Trabalho_Final_C214_Lab - Projeto Agenda
 
 ## Descrição
 
-Este Projeto consiste em uma Agenda de Contatos com Interface Gráfica desenvolvida em PyQt5. Oferece funcionalidades para Adicionar, Listar, Pesquisar e Remover Contatos e, também, a própria Agenda.
+Este Projeto consiste em uma Agenda de Contatos com Interface Gráfica desenvolvida em PyQt5. Oferece funcionalidades para Adicionar, Listar, Pesquisar, Remover Contatos e a própria Agenda do Usuário.
 
 <img src = "agenda.png" />
 
