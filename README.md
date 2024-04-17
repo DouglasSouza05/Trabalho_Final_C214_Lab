@@ -4,7 +4,7 @@
 
 ## Descrição
 
-Este Projeto consiste em uma Agenda de Contatos com Interface Gráfica desenvolvida em PyQt5. Oferece funcionalidades para Adicionar, Listar, Pesquisar, Remover Contatos e a própria Agenda do Usuário.
+Este Projeto consiste em uma Agenda de Contatos com Interface Gráfica desenvolvida em PyQt5. Oferece funcionalidades para Adicionar, Listar, Pesquisar, Remover Contatos e Deletar própria Agenda do Usuário.
 
 <img src = "agenda.png" />
 
