@@ -4,7 +4,7 @@
 
 ## Descrição
 
-Este Projeto consiste em uma Agenda de Contatos com Interface Gráfica desenvolvida em PyQt5. Oferece funcionalidades para Adicionar, Listar, Pesquisar, Remover Contatos e Deletar própria Agenda do Usuário.
+Este Projeto consiste em uma Agenda de Contatos com Interface Gráfica de Usuário (GUI) desenvolvida usando a Biblioteca Python PyQt5. Oferece funcionalidades para Adicionar, Listar, Pesquisar e Remover Contatos e, também, Deletar a própria Agenda do Usuário.
 
 <img src = "agenda.png" />
 
@@ -114,7 +114,7 @@ Os Arquivos Artefatos dos resultados que são criados após os Testes são os de
 
 ## DevOps
 
-Pode ser verificado pelo Actions do repositório deste trabalho, identificando os Steps de Build, Test e Notification. Além disso, também há o Badge do início deste README que confirma que os Testes estão passando com Sucesso e de que tudo está funcionando corretamente em nosso Pipeline.
+Pode ser verificado pelo Actions do repositório deste trabalho, identificando os Jobs de Build, Test e Notification. Além disso, também há o Badge do início deste README que confirma que os Testes estão passando com Sucesso e de que tudo está funcionando corretamente em nosso Pipeline.
 Sendo responsáveis por tal operação os arquivos .github\workflows\workflow.yml e scripts\email.sh.
 
 ## Participantes do projeto:
