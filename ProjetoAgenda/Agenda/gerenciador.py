@@ -8,13 +8,27 @@ import os
 class Gerenciador:
     def __init__(self):
         self.contatos = []
+        self.load_contatos()
+
+    def load_contatos(self):
+        if self.arquivo_exist("contatos.json"):
+            with open("contatos.json", 'r') as file:
+                contatos_json = json.load(file)
+                for contato_info in contatos_json:
+                    contato = Contato(
+                        nome=contato_info['nome'],
+                        sobrenome=contato_info['sobrenome'],
+                        telefone=contato_info['telefone'],
+                        empresa=contato_info['empresa'],
+                        email=contato_info['email']
+                    )
+                    self.contatos.append(contato)
 
     def add_contato(self, nome, sobrenome, telefone, empresa=None, email=None):
 
         contato = Contato(nome=nome, sobrenome=sobrenome,
                           telefone=telefone, empresa=empresa, email=email)
         self.contatos.append(contato)
-        print(self.contatos)
         self.save_contatos()
 
     def search_contato(self, nome, sobrenome):
@@ -44,13 +58,13 @@ class Gerenciador:
         try:
             with open("contatos.json", 'w') as file:
                 contatos_formatados = [
-                    config.formatar_contato(contato) if contato is not None else None for contato in self.contatos
+                    config.formatar_json(contato) if contato is not None else None for contato in self.contatos
                 ]
                 contatos_formatados = [c for c in contatos_formatados if c is not None]  # Remove contatos None
                 if contatos_formatados:
                     file.write(json.dumps(contatos_formatados, indent=2))
-                else:
-                    print("Nenhum contato para salvar.")
+                # else:
+                #     print("Nenhum contato para salvar.")
         except Exception as e:
             print(f"Erro Ao Salvar os Contatos: {e}")
 

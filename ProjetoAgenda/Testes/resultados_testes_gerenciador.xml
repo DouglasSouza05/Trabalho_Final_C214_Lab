@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="TestGerenciador-20240417123802" tests="5" file=".py" time="0.014" timestamp="2024-04-17T12:38:02" failures="0" errors="0" skipped="0">
+		<testcase classname="TestGerenciador" name="test_adicionar_contato" time="0.007" timestamp="2024-04-17T12:38:02" file="test_gerenciador.py" line="24"/>
+		<testcase classname="TestGerenciador" name="test_pesquisar_contato_existente" time="0.002" timestamp="2024-04-17T12:38:02" file="test_gerenciador.py" line="33"/>
+		<testcase classname="TestGerenciador" name="test_pesquisar_contato_inexistente" time="0.001" timestamp="2024-04-17T12:38:02" file="test_gerenciador.py" line="38"/>
+		<testcase classname="TestGerenciador" name="test_remover_contato_existente" time="0.003" timestamp="2024-04-17T12:38:02" file="test_gerenciador.py" line="42"/>
+		<testcase classname="TestGerenciador" name="test_remover_contato_inexistente" time="0.001" timestamp="2024-04-17T12:38:02" file="test_gerenciador.py" line="48"/>
+	</testsuite>
+</testsuites>

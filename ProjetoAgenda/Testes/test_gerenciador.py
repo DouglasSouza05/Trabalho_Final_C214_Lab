@@ -16,6 +16,9 @@ from Agenda.gerenciador import Gerenciador
 class TestGerenciador(unittest.TestCase):
 
     def setUp(self):
+        # Removendo contatos.json antes de cada suíte para não interferir devido a dados persistentes
+        if os.path.exists("contatos.json"):
+            os.remove("contatos.json")
         # Cria um gerenciador para uso nos testes
         self.gerenciador = Gerenciador()
 
@@ -23,10 +26,11 @@ class TestGerenciador(unittest.TestCase):
         self.gerenciador.add_contato("João", "Silva", "123456789", "EmpresaX", "joao.silva@email.com")
         self.assertEqual(len(self.gerenciador.contatos), 1, "O contato não foi adicionado corretamente.")
 
-    def test_listar_contatos(self):
-        contatos_iniciais = len(self.gerenciador.contatos)
-        self.gerenciador.list_contatos()
-        self.assertEqual(len(self.gerenciador.contatos), contatos_iniciais, "A lista de contatos não deveria ser modificada ao listar.")
+    # Retirando teste de listar contatos de gerenciador.py pois a função não estava sendo necessária
+    # def test_listar_contatos(self):
+    #     contatos_iniciais = len(self.gerenciador.contatos)
+    #     self.gerenciador.list_contatos()
+    #     self.assertEqual(len(self.gerenciador.contatos), contatos_iniciais, "A lista de contatos não deveria ser modificada ao listar.")
 
     def test_pesquisar_contato_existente(self):
         self.gerenciador.add_contato("Maria", "Oliveira", "987654321", "EmpresaY", "maria.oliveira@email.com")
@@ -52,4 +56,3 @@ if __name__ == "__main__":
     with open("resultados_testes_gerenciador.xml", "wb") as output:
         runner = xmlrunner.XMLTestRunner(output=output)
         unittest.main(testRunner=runner)
-
